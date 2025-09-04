@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NextStack Consulting - Strategic Tech Advisory</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: #ffffff;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header */
+        .header {
+            background: #ffffff;
+            padding: 1.5rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #2c3e50;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #3498db;
+        }
+
+        .nav-cta {
+            background: #3498db;
+            color: white !important;
+            padding: 0.8rem 1.5rem;
+            border-radius: 6px;
+            transition: background-color 0.3s;
+        }
+
+        .nav-cta:hover {
+            background: #2980b9;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 150px 0 100px;
+            text-align: center;
+            background: #ffffff;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            color: #7f8c8d;
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.5;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: #34495e;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            line-height: 1.7;
+        }
+
+        .cta-section {
+            margin: 3rem 0;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: background-color 0.3s;
+            margin: 0.5rem;
+        }
+
+        .cta-button:hover {
+            background: #2980b9;
+        }
+
+        .cta-secondary {
+            background: transparent;
+            color: #3498db;
+            border: 2px solid #3498db;
+        }
+
+        .cta-secondary:hover {
+            background: #3498db;
+            color: white;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 100px 0;
+            background: #f8f9fa;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: #7f8c8d;
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 3rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+        }
+
+        .service-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .service-description {
+            color: #34495e;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .service-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-features li {
+            color: #34495e;
+            margin-bottom: 0.5rem;
+            padding-left: 1.2rem;
+            position: relative;
+        }
+
+        .service-features li::before {
+            content: "•";
+            color: #3498db;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .service-pricing {
+            font-weight: 600;
+            color: #3498db;
+            font-size: 1.1rem;
+        }
+
+        /* About Section */
+        .about {
+            padding: 100px 0;
+            background: white;
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-text {
+            font-size: 1.2rem;
+            color: #34495e;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+
+        .about-highlight {
+            background: #ecf0f1;
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            border-left: 4px solid #3498db;
+        }
+
+        .about-highlight h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        /* Process Section */
+        .process {
+            padding: 100px 0;
+            background: #f8f9fa;
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .process-step {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .process-number {
+            width: 50px;
+            height: 50px;
+            background: #3498db;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin: 0 auto 1rem;
+        }
+
+        .process-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .process-description {
+            color: #34495e;
+            line-height: 1.6;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 100px 0;
+            background: white;
+            text-align: center;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 3rem auto 0;
+            text-align: left;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #2c3e50;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #ecf0f1;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .submit-btn {
+            background: #3498db;
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            background: #2980b9;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 60px 0 30px;
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: #3498db;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section ul li a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section ul li a:hover {
+            color: #3498db;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #34495e;
+            color: #95a5a6;
+        }
+
+        .partner-mention {
+            background: #ecf0f1;
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 3rem 0;
+            text-align: center;
+            border-left: 4px solid #3498db;
+        }
+
+        .partner-mention h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .partner-mention p {
+            color: #34495e;
+            font-size: 1.1rem;
+        }
+
+        .partner-mention a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .partner-mention a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                text-align: center;
+            }
+            
+            .container {
+                padding: 0 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav container">
+            <a href="#" class="logo">NextStack</a>
+            <ul class="nav-links">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#process">Process</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#contact" class="nav-cta">Get Started</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Strategic Tech Advisory for Growing Companies</h1>
+            <p class="hero-subtitle">We architect resilient systems, modernize tech stacks, and guide you through scalable infrastructure decisions.</p>
+            <p class="hero-description">NextStack Consulting helps businesses build technical foundations designed for scale. Our team combines enterprise-grade expertise with practical solutions, ensuring your infrastructure can handle growth without breaking your budget or timeline.</p>
+            
+            <div class="partner-mention">
+                <h3>The Strategic Advisory Behind Zythera</h3>
+                <p>NextStack is the consulting arm behind <a href="https://zythera.vercel.app" target="_blank">Zythera</a>. While Zythera delivers powerful automation bundles, NextStack provides the strategic architecture, security planning, and technical guidance to make it all work seamlessly.</p>
+            </div>
+            
+            <div class="cta-section">
+                <a href="mailto:hello@nextstackconsulting.com" class="cta-button">Email Us</a>
+                <a href="#contact" class="cta-button cta-secondary">Schedule Consultation</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">Our Services</h2>
+            <p class="section-subtitle">Practical infrastructure and strategic guidance for companies ready to scale their technology foundations.</p>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3 class="service-title">Infrastructure Assessment</h3>
+                    <p class="service-description">Comprehensive evaluation of your current systems to identify bottlenecks, security gaps, and optimization opportunities.</p>
+                    <ul class="service-features">
+                        <li>Architecture review and documentation</li>
+                        <li>Performance bottleneck identification</li>
+                        <li>Security and compliance analysis</li>
+                        <li>Cost optimization recommendations</li>
+                        <li>Scalability planning</li>
+                    </ul>
+                    <div class="service-pricing">$5,000 - $15,000</div>
+                </div>
+
+                <div class="service-card">
+                    <h3 class="service-title">Reliability Engineering</h3>
+                    <p class="service-description">Implementation of proven SRE practices to improve system reliability, monitoring, and incident response capabilities.</p>
+                    <ul class="service-features">
+                        <li>Monitoring and alerting systems</li>
+                        <li>Incident response procedures</li>
+                        <li>SLA/SLO definition and tracking</li>
+                        <li>Disaster recovery planning</li>
+                        <li>Postmortem processes</li>
+                    </ul>
+                    <div class="service-pricing">$7,000 - $20,000</div>
+                </div>
+
+                <div class="service-card">
+                    <h3 class="service-title">Cloud & DevOps Optimization</h3>
+                    <p class="service-description">Streamline deployment processes, optimize cloud infrastructure, and reduce operational overhead.</p>
+                    <ul class="service-features">
+                        <li>CI/CD pipeline optimization</li>
+                        <li>Cloud migration planning</li>
+                        <li>Infrastructure as code</li>
+                        <li>Deployment automation</li>
+                        <li>Performance tuning</li>
+                    </ul>
+                    <div class="service-pricing">$8,000 - $25,000</div>
+                </div>
+                
+                <div class="service-card">
+                    <h3 class="service-title">Strategic Technology Advisory</h3>
+                    <p class="service-description">Ongoing guidance for infrastructure decisions, technology selection, and technical planning.</p>
+                    <ul class="service-features">
+                        <li>Technology roadmap development</li>
+                        <li>Vendor evaluation and selection</li>
+                        <li>Technical hiring support</li>
+                        <li>Compliance preparation</li>
+                        <li>Team process improvement</li>
+                    </ul>
+                    <div class="service-pricing">$5,000 - $8,000/month</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <h2 class="section-title">About NextStack</h2>
+                <p class="about-text">We are a specialized tech consulting firm focused on helping growing companies build reliable, scalable infrastructure. Our approach combines enterprise-grade practices with practical solutions designed for real-world business constraints.</p>
+                
+                <div class="about-highlight">
+                    <h3>Our Philosophy</h3>
+                    <p>We believe great technology should enable business growth, not complicate it. That's why we focus on practical, battle-tested solutions that can scale with your company while remaining maintainable by your team.</p>
+                </div>
+                
+                <p class="about-text">Whether you're preparing for rapid scaling, improving system reliability, or building automation capabilities, we bring the strategic thinking and hands-on expertise to get it done right.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="process" class="process">
+        <div class="container">
+            <h2 class="section-title">How We Work</h2>
+            <p class="section-subtitle">Our approach focuses on understanding your business context and delivering practical solutions with clear timelines.</p>
+            
+            <div class="process-grid">
+                <div class="process-step">
+                    <div class="process-number">1</div>
+                    <h3 class="process-title">Discovery</h3>
+                    <p class="process-description">We start by understanding your current infrastructure, business goals, and technical challenges through detailed assessment.</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-number">2</div>
+                    <h3 class="process-title">Strategy</h3>
+                    <p class="process-description">We develop a clear roadmap with prioritized recommendations, realistic timelines, and measurable outcomes.</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-number">3</div>
+                    <h3 class="process-title">Implementation</h3>
+                    <p class="process-description">We work alongside your team to execute the plan, providing hands-on guidance and comprehensive documentation.</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-number">4</div>
+                    <h3 class="process-title">Enablement</h3>
+                    <p class="process-description">We ensure your team can maintain and evolve the systems independently through training and knowledge transfer.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Let's Discuss Your Infrastructure</h2>
+            <p class="section-subtitle">Ready to build more reliable, scalable systems? Let's explore how we can help.</p>
+            
+            <div class="contact-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>First Name</label>
+                        <input type="text" placeholder="John" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Last Name</label>
+                        <input type="text" placeholder="Smith" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" placeholder="john@company.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Company</label>
+                        <input type="text" placeholder="Your Company" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Current Team Size</label>
+                    <select required>
+                        <option value="">Select team size</option>
+                        <option value="1-10">1-10 people</option>
+                        <option value="11-25">11-25 people</option>
+                        <option value="26-50">26-50 people</option>
+                        <option value="51-100">51-100 people</option>
+                        <option value="100+">100+ people</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>What's your biggest infrastructure challenge?</label>
+                    <textarea rows="4" placeholder="Describe your current technical challenges or goals..."></textarea>
+                </div>
+                <button class="submit-btn" onclick="submitContact()">Schedule Consultation</button>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>NextStack Consulting</h3>
+                    <p>Strategic tech advisory for growing companies. Building reliable infrastructure that scales with your business.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#services">Infrastructure Assessment</a></li>
+                        <li><a href="#services">Reliability Engineering</a></li>
+                        <li><a href="#services">Cloud & DevOps</a></li>
+                        <li><a href="#services">Strategic Advisory</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#process">Our Process</a></li>
+                        <li><a href="https://zythera.vercel.app" target="_blank">Zythera Automation</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li><a href="mailto:hello@nextstackconsulting.com">hello@nextstackconsulting.com</a></li>
+                        <li><a href="#contact">Schedule Consultation</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 NextStack Consulting. Building reliable systems for growing companies.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Form submission
+        function submitContact() {
+            alert('Thank you for your interest! We\'ll be in touch within 24 hours to schedule your consultation.');
+        }
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        console.log('NextStack Consulting website loaded');
+    </script>
+</body>
+</html>
